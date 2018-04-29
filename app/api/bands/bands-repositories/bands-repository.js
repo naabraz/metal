@@ -1,29 +1,27 @@
-'use strict';
-
 const database = require('../../../managers/database');
 
 module.exports = {
-    listBands: async () => {
-        const connection = await database.startConnection();
-        const base = await database.base(connection);
-        const collection = await database.collection(base, 'bands');
+  listBands: async () => {
+    const connection = await database.startConnection();
+    const base = await database.base(connection);
+    const collection = await database.collection(base, 'bands');
 
-        const result = await collection.find().toArray();
+    const result = await collection.find().toArray();
 
-        database.closeConnection(connection);
+    database.closeConnection(connection);
 
-        return result;
-    },
+    return result;
+  },
 
-    insertBand: async (band) => {
-        const connection = await database.startConnection();
-        const base = await database.base(connection);
-        const collection = await database.collection(base, 'bands');
+  insertBand: async (band) => {
+    const connection = await database.startConnection();
+    const base = await database.base(connection);
+    const collection = await database.collection(base, 'bands');
 
-        try {
-            collection.insertOne(band);
-        } catch (error) {
-            console.log(error);
-        }
+    try {
+      collection.insertOne(band);
+    } catch (error) {
+      console.log(error);
     }
-}
+  },
+};
