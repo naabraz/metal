@@ -6,7 +6,6 @@ module.exports = {
     listBands: (app) => {
         app.get('/bands', async (request, response, next) => {
             try {
-                
                 const bands = await bandsController.listBands();
 
                 response.json(bands);
@@ -19,13 +18,7 @@ module.exports = {
     insertBand: (app) => {
         app.post('/bands/insert', async (request, response, next) => {
             try {
-
-                const band = {
-                    name: request.body.name
-                }
-
-                bandsController.insertBand(band);
-
+                bandsController.insertBand(request);
                 response.json({success: true});
             } catch (error) {
                 next(error);
