@@ -12,16 +12,4 @@ module.exports = {
 
     return result;
   },
-
-  insertBand: async (band) => {
-    const connection = await database.startConnection();
-    const base = await database.base(connection);
-    const collection = await database.collection(base, 'bands');
-
-    try {
-      collection.insertOne(band);
-    } catch (error) {
-      console.log(error);
-    }
-  },
 };

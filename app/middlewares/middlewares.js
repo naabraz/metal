@@ -8,7 +8,6 @@ module.exports = {
     }));
 
     app.use((err, request, response, next) => {
-      console.log(err);
       response.status(500).send('Something broke!');
       next();
     });

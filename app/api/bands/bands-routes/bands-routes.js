@@ -12,15 +12,4 @@ module.exports = {
       }
     });
   },
-
-  insertBand: (app) => {
-    app.post('/bands/insert', async (request, response, next) => {
-      try {
-        bandsController.insertBand(request);
-        response.json({ success: true });
-      } catch (error) {
-        next(error);
-      }
-    });
-  },
 };
