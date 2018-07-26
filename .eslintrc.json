@@ -1,6 +1,10 @@
 {
     "extends": "airbnb-base",
     "rules": {
-        "linebreak-style": 0
+        "linebreak-style": 0,
+        "prefer-destructuring": 0
+    },
+    "env": {
+        "mocha": true
     }
 }
