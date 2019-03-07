@@ -3,7 +3,7 @@ const sinon = require('sinon');
 
 const expect = chai.expect;
 
-const bandsService = require('../bands-services/bands-service');
+const bandsService = require('../bands-services');
 const bandsController = require('../bands-controllers');
 
 describe('User access route to list bands', () => {
