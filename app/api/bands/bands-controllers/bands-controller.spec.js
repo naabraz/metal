@@ -3,10 +3,10 @@ const sinon = require('sinon');
 
 const expect = chai.expect;
 
-const bandsService = require('./bands-service');
-const bandsRepository = require('../bands-repositories/bands-repository');
+const bandsService = require('../bands-services/bands-service');
+const bandsController = require('../bands-controllers');
 
-describe('User wants to list all bands', () => {
+describe('User access route to list bands', () => {
   const sandbox = sinon.createSandbox();
   const bandsRepositoryResponse = [{
     _id: '5ae4ee0f66a91ad6dd98144e',
@@ -15,7 +15,7 @@ describe('User wants to list all bands', () => {
   }];
 
   beforeEach(() => {
-    sandbox.stub(bandsRepository, 'listBands').resolves(bandsRepositoryResponse);
+    sandbox.stub(bandsService, 'listBands').resolves(bandsRepositoryResponse);
   });
 
   afterEach(() => {
@@ -23,7 +23,7 @@ describe('User wants to list all bands', () => {
   });
 
   it('should list all bands', async () => {
-    const response = await bandsService.listBands();
+    const response = await bandsController.listBands();
 
     expect(response).to.be.an('array');
     expect(response).to.deep.equal(bandsRepositoryResponse);
