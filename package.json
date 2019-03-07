@@ -6,8 +6,8 @@
   "scripts": {
     "start": "node index.js",
     "dev": "cross-env NODE_ENV=development nodemon index.js",
-    "test": "./node_modules/.bin/mocha ./app --recursive --reporter spec",
-    "test-coverage": "nyc --reporter=html ./node_modules/.bin/mocha ./app --recursive spec"
+    "test": "./node_modules/.bin/mocha ./app/api --recursive --reporter spec",
+    "test-coverage": "nyc --reporter=html ./node_modules/.bin/mocha ./app/api --recursive spec"
   },
   "author": "Natalia Braz",
   "license": "ISC",
