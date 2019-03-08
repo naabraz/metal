@@ -27,8 +27,8 @@ describe('User wants to list all bands from base', () => {
   beforeEach(() => {
     sandbox.stub(database, 'startConnection').resolves({});
     sandbox.stub(database, 'closeConnection').resolves({});
-    sandbox.stub(database, 'base').resolves({});
-    sandbox.stub(database, 'collection').resolves(collectionReturn);
+    sandbox.stub(database, 'getBase').resolves({});
+    sandbox.stub(database, 'getCollection').resolves(collectionReturn);
   });
 
   afterEach(() => {
@@ -42,7 +42,7 @@ describe('User wants to list all bands from base', () => {
   });
 
   it('should select base', async () => {
-    const base = await database.base({});
+    const base = await database.getBase({});
 
     expect(base).to.be.an('object');
   });

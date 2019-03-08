@@ -1,5 +1,5 @@
 const bandsRepository = require('../bands-repositories');
 
-module.exports = {
-  listBands: async () => bandsRepository.listBands(),
-};
+const listBands = async () => bandsRepository.listBands();
+
+module.exports = { listBands };
