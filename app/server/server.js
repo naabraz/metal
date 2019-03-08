@@ -1,10 +1,11 @@
 const app = require('express')();
 
 const { bands, healthcheck } = require('../routes');
-const middleware = require('../middlewares');
+const { middlewares } = require('../middlewares');
 const { port } = require('../config').app;
 
-middleware.middlewares(app);
+middlewares(app);
+
 bands.routes(app);
 healthcheck.routes(app);
 
