@@ -14,10 +14,9 @@ const listBands = (app) => {
 
 const addBand = (app) => {
   app.post('/bands', async (request, response, next) => {
-    const { body } = request;
-
     try {
-      const result = bandsController.addBand(body);
+      const { body } = request;
+      const result = await bandsController.addBand(body);
 
       response.json(result);
     } catch (error) {
