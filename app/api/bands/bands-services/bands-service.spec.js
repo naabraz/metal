@@ -16,6 +16,7 @@ describe('User wants to list all bands', () => {
 
   beforeEach(() => {
     sandbox.stub(bandsRepository, 'listBands').resolves(bandsRepositoryResponse);
+    sandbox.stub(bandsRepository, 'addBand').resolves({ success: true });
   });
 
   afterEach(() => {
@@ -27,5 +28,13 @@ describe('User wants to list all bands', () => {
 
     expect(response).to.be.an('array');
     expect(response).to.deep.equal(bandsRepositoryResponse);
+  });
+
+  it('should add band', async () => {
+    const newBand = { name: 'Opeth' };
+    const response = await bandsService.addBand(newBand);
+
+    expect(response).to.be.an('object');
+    expect(response).to.deep.equal({ success: true });
   });
 });

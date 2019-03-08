@@ -16,6 +16,7 @@ describe('User wants to list all bands from base', () => {
 
   beforeEach(() => {
     sandbox.stub(database, 'listCollection').resolves(bandsRepositoryResponse);
+    sandbox.stub(database, 'insertDocument').resolves({ success: true });
   });
 
   afterEach(() => {
@@ -27,5 +28,13 @@ describe('User wants to list all bands from base', () => {
 
     expect(bands).to.be.an('array');
     expect(bands).to.deep.equal(bandsRepositoryResponse);
+  });
+
+  it('should add band to collection', async () => {
+    const newBand = { name: 'Opeth' };
+    const response = await repository.addBand(newBand);
+
+    expect(response).to.be.an('object');
+    expect(response).to.deep.equal({ success: true });
   });
 });

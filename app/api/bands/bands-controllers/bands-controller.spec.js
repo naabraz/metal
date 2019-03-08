@@ -16,6 +16,7 @@ describe('User access route to list bands', () => {
 
   beforeEach(() => {
     sandbox.stub(bandsService, 'listBands').resolves(bandsRepositoryResponse);
+    sandbox.stub(bandsService, 'addBand').resolves({ success: true });
   });
 
   afterEach(() => {
@@ -27,5 +28,13 @@ describe('User access route to list bands', () => {
 
     expect(response).to.be.an('array');
     expect(response).to.deep.equal(bandsRepositoryResponse);
+  });
+
+  it('should add band', async () => {
+    const newBand = { name: 'Opeth' };
+    const response = await bandsController.addBand(newBand);
+
+    expect(response).to.be.an('object');
+    expect(response).to.deep.equal({ success: true });
   });
 });
