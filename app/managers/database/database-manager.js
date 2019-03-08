@@ -1,8 +1,8 @@
 const mongo = require('mongodb').MongoClient;
-const config = require('../../config');
+const { url, name } = require('../../config').database;
 
-const startConnection = async () => mongo.connect(config.database.url, { useNewUrlParser: true });
-const getBase = async connection => connection.db(config.database.name);
+const startConnection = async () => mongo.connect(url, { useNewUrlParser: true });
+const getBase = async connection => connection.db(name);
 const getCollection = async (base, collection) => base.collection(collection);
 const closeConnection = async connection => connection.close();
 
