@@ -12,4 +12,21 @@ const listBands = (app) => {
   });
 };
 
-module.exports = { listBands };
+const addBand = (app) => {
+  app.post('/bands', async (request, response, next) => {
+    const { body } = request;
+
+    try {
+      const result = bandsController.addBand(body);
+
+      response.json(result);
+    } catch (error) {
+      next(error);
+    }
+  });
+};
+
+module.exports = {
+  listBands,
+  addBand,
+};
