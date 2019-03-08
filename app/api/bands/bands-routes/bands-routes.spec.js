@@ -5,9 +5,9 @@ const chai = require('chai');
 
 const expect = chai.expect;
 
-const route = require('../../../routes');
+const { bands } = require('../../../routes');
 
-route.routes(app);
+bands.routes(app);
 
 const controller = require('../bands-controllers/bands-controller');
 
