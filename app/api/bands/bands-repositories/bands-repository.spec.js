@@ -14,43 +14,12 @@ describe('User wants to list all bands from base', () => {
     country: '5ae5e5ad66a91ad6dd9815be',
   }];
 
-  const collectionReturn = {
-    find() {
-      return {
-        toArray() {
-          return bandsRepositoryResponse;
-        },
-      };
-    },
-  };
-
   beforeEach(() => {
-    sandbox.stub(database, 'startConnection').resolves({});
-    sandbox.stub(database, 'closeConnection').resolves({});
-    sandbox.stub(database, 'getBase').resolves({});
-    sandbox.stub(database, 'getCollection').resolves(collectionReturn);
+    sandbox.stub(database, 'listCollection').resolves(bandsRepositoryResponse);
   });
 
   afterEach(() => {
     sandbox.restore();
-  });
-
-  it('should connect to database', async () => {
-    const startConnection = await database.startConnection();
-
-    expect(startConnection).to.be.an('object');
-  });
-
-  it('should select base', async () => {
-    const base = await database.getBase({});
-
-    expect(base).to.be.an('object');
-  });
-
-  it('should close connection', async () => {
-    const closeConnection = await database.closeConnection();
-
-    expect(closeConnection).to.be.an('object');
   });
 
   it('should return bands collection', async () => {
