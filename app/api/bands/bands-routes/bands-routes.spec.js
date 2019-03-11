@@ -44,4 +44,27 @@ describe('User access get route to list bands', () => {
       .set('Accept', 'application/json')
       .expect(500);
   });
+
+  it('should add band error when post route is accessed', async () => {
+    sandbox.stub(controller, 'addBand').resolves({ success: true });
+
+    return request(app)
+      .post('/bands')
+      .send({ name: 'Opeth' })
+      .set('Accept', 'application/json')
+      .expect(200)
+      .then((response) => {
+        expect(response.body).to.deep.equal({ success: true });
+      });
+  });
+
+  it('should return error when add band route returns error', async () => {
+    sandbox.stub(controller, 'addBand').rejects('Error');
+
+    return request(app)
+      .post('/bands')
+      .send({ name: 'Opeth' })
+      .set('Accept', 'application/json')
+      .expect(500);
+  });
 });
