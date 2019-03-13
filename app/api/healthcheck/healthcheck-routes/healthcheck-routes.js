@@ -1,6 +1,6 @@
 const healthCheck = (app) => {
   app.get('/healthcheck', async (request, response) => {
-    const health = { status: true };
+    const health = { healthy: true };
     response.json(health);
   });
 };

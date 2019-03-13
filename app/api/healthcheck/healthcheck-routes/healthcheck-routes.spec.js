@@ -21,6 +21,6 @@ describe('User access health route to check health application', () => {
     .set('Accept', 'application/json')
     .expect(200)
     .then((response) => {
-      expect(response.body).to.deep.equal({ status: true });
+      expect(response.body).to.deep.equal({ healthy: true });
     }));
 });
